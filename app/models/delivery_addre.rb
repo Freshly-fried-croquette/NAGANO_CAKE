@@ -1,0 +1,2 @@
+class DeliveryAddre < ApplicationRecord
+end
