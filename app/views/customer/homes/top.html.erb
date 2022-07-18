@@ -1,1 +1,33 @@
+<<<<<<< Updated upstream
 <h1>Top page</h1>
+=======
+<table>
+  <thead>
+    <th4>ジャンル検索</th4>
+  </thead>
+  <tbody>
+    <% @genres.each do |genre| %>
+        <div><%= link_to genre.name %></div>
+    <% end %>
+  </tbody>
+</table>
+<div>
+    ようこそ、ながのCAKEへ！</br>
+    このサイトは、ケーキ販売のECサイトになります。</br>
+    会員でない方も商品の閲覧はできますが、</br>
+    購入には会員登録が必要になります。</br>
+</div>
+<div>
+  <h3>新着商品</h3>
+</div>
+<div>
+　<% @products.each do |product| %>
+    <%= image_tag product.image, size: "300x200" %>
+    <%= product.name %>
+    ¥<%= product.price %>
+  <% end %>
+</div>
+<div>
+  <%= link_to "全ての商品を見る >", customer_products_path %>
+</div>
+>>>>>>> Stashed changes

@@ -8,7 +8,10 @@ class CreateProducts < ActiveRecord::Migration[6.1]
       t.integer :price,       null: false
       t.boolean :sale_status, default: true, null: false
       
+<<<<<<< Updated upstream
       
+=======
+>>>>>>> Stashed changes
       t.timestamps
     end
   end

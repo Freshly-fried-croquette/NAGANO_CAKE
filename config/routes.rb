@@ -7,7 +7,16 @@ namespace :customer do
 resources :products, only: [:index, :show]
 resources :current_customer, only: [:show, :edit, :update, :unsubscribe, :withdrawal]
 resources :shopping_carts, only: [:index, :update, :destroy, :all_destroy, :create]
+<<<<<<< Updated upstream
 resources :orders, only: [:new, :confilm, :complete, :create, :index, :show]
+=======
+resources :orders, only: [:new, :create, :index]do
+  collection do
+    get "confirm"
+    get "complete"
+  end
+end
+>>>>>>> Stashed changes
 resources :delivery_addressees, only: [:index, :edit, :create, :update, :destroy]
 end
 
@@ -17,7 +26,11 @@ namespace :master do
 root to: 'homes#top'
 resources :homes, only: [:top]
 resources :products, only: [:index, :new, :create, :show, :edit, :update]
+<<<<<<< Updated upstream
 resources :genres, only: [:index, :create, :edit, :update]
+=======
+resources :genres, only: [:index, :create, :edit, :update, :destroy]
+>>>>>>> Stashed changes
 resources :users, only: [:index, :show, :edit, :update]
 resources :orders, only: [:show, :update]
 resources :orders_datails, only: [:update]
