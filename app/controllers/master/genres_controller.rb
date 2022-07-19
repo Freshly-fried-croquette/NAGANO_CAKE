@@ -1,7 +1,5 @@
 class Master::GenresController < ApplicationController
-<<<<<<< Updated upstream
-=======
-    
+  
   def index
     @genre = Genre.new
     @genres = Genre.all
@@ -36,5 +34,4 @@ class Master::GenresController < ApplicationController
     params.require(:genre).permit(:name)
   end
     
->>>>>>> Stashed changes
 end

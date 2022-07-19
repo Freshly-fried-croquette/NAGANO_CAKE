@@ -10,9 +10,6 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-<<<<<<< Updated upstream
-ActiveRecord::Schema.define(version: 2022_07_17_060601) do
-=======
 ActiveRecord::Schema.define(version: 2022_07_18_062545) do
 
   create_table "active_storage_attachments", force: :cascade do |t|
@@ -42,7 +39,6 @@ ActiveRecord::Schema.define(version: 2022_07_18_062545) do
     t.string "variation_digest", null: false
     t.index ["blob_id", "variation_digest"], name: "index_active_storage_variant_records_uniqueness", unique: true
   end
->>>>>>> Stashed changes
 
   create_table "customers", force: :cascade do |t|
     t.string "email", default: "", null: false
@@ -132,9 +128,6 @@ ActiveRecord::Schema.define(version: 2022_07_18_062545) do
     t.datetime "updated_at", precision: 6, null: false
   end
 
-<<<<<<< Updated upstream
-=======
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
   add_foreign_key "active_storage_variant_records", "active_storage_blobs", column: "blob_id"
->>>>>>> Stashed changes
 end

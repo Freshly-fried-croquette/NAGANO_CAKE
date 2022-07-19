@@ -1,7 +1,5 @@
 class Master::ProductsController < ApplicationController
-<<<<<<< Updated upstream
-=======
-    
+
   def new
     @product = Product.new
     @genres = Genre.all
@@ -10,7 +8,7 @@ class Master::ProductsController < ApplicationController
   def create
     product = Product.new(product_params)
     product.save
-    redirect_to customer_products_path
+    redirect_to master_products_path
   end
   
   private
@@ -18,5 +16,4 @@ class Master::ProductsController < ApplicationController
     params.require(:product).permit(:image, :name, :description, :genres_id, :price, :sale_status)
   end
     
->>>>>>> Stashed changes
 end

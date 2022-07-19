@@ -1,6 +1,4 @@
 class Customer::OrdersController < ApplicationController
-<<<<<<< Updated upstream
-=======
   
   def confirm
   end
@@ -8,5 +6,4 @@ class Customer::OrdersController < ApplicationController
   def complete
   end
     
->>>>>>> Stashed changes
 end
