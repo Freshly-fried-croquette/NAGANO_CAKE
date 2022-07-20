@@ -6,12 +6,6 @@ get "customer/home/about"=>"customer#homes#about"
 
 namespace :customer do
 resources :products, only: [:index, :show]
-get "current_customer/unsubscribe"=>"current_customers#unsubscribe"
-get "current_customer/withdrawal"=>"current_customers#withdrawal"
-resources :current_customer, only: [:show, :edit, :update] 
-get "shopping_carts/all_destroy"=>"shopping_carts#all_destroy"
-resources :shopping_carts, only: [:index, :update, :destroy, :create]
-resources :orders, only: [:new, :confilm, :complete, :create, :index, :show]
 resources :delivery_addressees, only: [:index, :edit, :create, :update, :destroy]
 end
 
@@ -22,7 +16,7 @@ namespace :master do
 root to: 'homes#top'
 resources :homes, only: [:top]
 resources :products, only: [:index, :new, :create, :show, :edit, :update]
-resources :genres, only: [:index, :create, :edit, :update]
+resources :genres, only: [:index, :create, :edit, :update, :destroy]
 resources :users, only: [:index, :show, :edit, :update]
 resources :orders, only: [:show, :update]
 resources :orders_datails, only: [:update]
