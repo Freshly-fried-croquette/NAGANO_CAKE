@@ -3,13 +3,18 @@ Rails.application.routes.draw do
 root to: 'customer/homes#top'
 get "customer/home/about"=>"customer#homes#about"
 
+
 namespace :customer do
 resources :products, only: [:index, :show]
-resources :current_customer, only: [:show, :edit, :update, :unsubscribe, :withdrawal]
-resources :shopping_carts, only: [:index, :update, :destroy, :all_destroy, :create]
+get "current_customer/unsubscribe"=>"current_customers#unsubscribe"
+get "current_customer/withdrawal"=>"current_customers#withdrawal"
+resources :current_customer, only: [:show, :edit, :update] 
+get "shopping_carts/all_destroy"=>"shopping_carts#all_destroy"
+resources :shopping_carts, only: [:index, :update, :destroy, :create]
 resources :orders, only: [:new, :confilm, :complete, :create, :index, :show]
 resources :delivery_addressees, only: [:index, :edit, :create, :update, :destroy]
 end
+
 
 get "master/home/top"=>"master#homes#top"
 
