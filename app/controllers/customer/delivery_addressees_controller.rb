@@ -1,5 +1,6 @@
 class Customer::AddressesController < ApplicationController
   before_action :authenticate_customer!
+  #後で消す
 
   def index
     @addresses = current_customer.addresses.all
