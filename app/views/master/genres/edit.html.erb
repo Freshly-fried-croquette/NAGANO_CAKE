@@ -1,0 +1,9 @@
+<div>
+  <h3>ジャンル編集</h3>
+</div>
+<%= form_with model: @genre, url:master_genre_path do |f| %>
+    <%= f.label :name, "ジャンル名" %>
+    <%= f.text_field :name %>
+    <%= f.submit "変更を保存" %>
+    <%= link_to "削除", master_genre_path, method: :delete, "data-confirm" => "本当に削除しますか？" %>
+<% end %>
