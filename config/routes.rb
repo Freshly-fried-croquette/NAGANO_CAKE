@@ -1,12 +1,12 @@
 Rails.application.routes.draw do
-  
+
 root to: 'customer/homes#top'
-get "customer/home/about"=>"customer#homes#about"
+get "customer/home/about"=>"customer/homes#about"
 
 
 namespace :customer do
 resources :products, only: [:index, :show]
-resources :delivery_addressees, only: [:index, :edit, :create, :update, :destroy]
+resources :delivery_addresses, only: [:index, :edit, :create, :update, :destroy]
 end
 
 
@@ -21,9 +21,9 @@ resources :users, only: [:index, :show, :edit, :update]
 resources :orders, only: [:show, :update]
 resources :orders_datails, only: [:update]
 end
-  
-  
-  
+
+
+
 # 顧客用
 # URL /customers/sign_in ...
 devise_for :customers,skip: [:passwords], controllers: {

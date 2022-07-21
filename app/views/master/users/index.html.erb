@@ -22,7 +22,7 @@
                 <% end %>
               </td>
               <td><%= user.email %></td>
-              <td><% user.deleted_user %></td>
+              <td><%= user.deleted_user ? '有効' : '退会' %></td>
             </tr>
           <% end %>
         </tbody>
