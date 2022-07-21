@@ -1,12 +1,26 @@
 Rails.application.routes.draw do
   
 root to: 'customer/homes#top'
-get "customer/home/about"=>"customer#homes#about"
+get "customer/home/about"=>"customer/homes#about"
 
 
 namespace :customer do
+get "current_customer/unsubscribe"=>"current_customers#unsubscribe"
+patch "current_customer/withdrawal"=>"current_customers#withdrawal"
+get "current_customer/mypage"=>"current_customers#show"
+resource :current_customer, only: [:edit, :update] 
+get "shopping_carts/all_destroy"=>"shopping_carts#all_destroy"
+resources :shopping_carts, only: [:index, :update, :destroy, :create]
+resources :orders, only: [:new, :confilm, :complete, :create, :index, :show]
+resources :shopping_carts, only: [:index, :update, :destroy, :all_destroy, :create]
+resources :orders, only: [:new, :create, :index]do
+  collection do
+    get "confirm"
+    get "complete"
+  end
+end
 resources :products, only: [:index, :show]
-resources :delivery_addressees, only: [:index, :edit, :create, :update, :destroy]
+resources :delivery_addresses, only: [:index, :edit, :create, :update, :destroy]
 end
 
 
@@ -32,7 +46,7 @@ devise_for :customers,skip: [:passwords], controllers: {
 }
 
 # 管理者用
-# URL /admin/sign_in ...
+# URL /master/sign_in ...
 devise_for :master, skip: [:registrations, :passwords] ,controllers: {
   sessions: "master/sessions"
 }

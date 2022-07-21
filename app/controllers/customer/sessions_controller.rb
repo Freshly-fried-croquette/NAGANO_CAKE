@@ -1,15 +1,14 @@
 # frozen_string_literal: true
 
 class Customer::SessionsController < Devise::SessionsController
-  
-  class Customer::SessionsController < Devise::SessionsController
-  before_action :customer_state, only: [:create]
+ before_action :customer_state, only: [:create]
 
   def after_sign_in_path_for(resource)
-   case resource
-   when Customer
-     customer_products
-   end
+     customer_products_path
+  end
+  
+  def after_sign_out_path_for(resource)
+     root_path
   end
 
   protected
@@ -52,5 +51,4 @@ class Customer::SessionsController < Devise::SessionsController
   #   devise_parameter_sanitizer.permit(:sign_in, keys: [:attribute])
   # end
   
-  end
 end
