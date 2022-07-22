@@ -1,10 +1,11 @@
 class Customer::HomesController < ApplicationController
-  
 
-  def top
-    @genres = Genre.all
-    @products = Product.first(4)
-  end
 
-  
+    def top
+        @genres= Genre.all
+        @products = Product.first(4)
+    end
+    
+    def about
+    end
 end
