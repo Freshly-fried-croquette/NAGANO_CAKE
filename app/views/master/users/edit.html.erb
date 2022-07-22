@@ -1,0 +1,77 @@
+<div class ="container">
+
+  <div class = "row">
+    <div class = "col-lg-4 offset-lg-1 mb-3">
+      <h5><%= @user.last_name %><%= @user.first_name %>さんの会員情報編集</h5>
+    </div>
+  </div>
+
+  <%= form_with model:[:master, @user] do |f| %>
+  <div class  = "row">
+    <div class = "col-lg-10 mb-4">
+      <table class = "table table-borderless">
+
+        <tr>
+          <td>会員ID</td>
+          <td>
+           <%= @user.id %>
+          </td>
+        </tr>
+
+        <tr>
+          <td>氏名</td>
+          <td>
+           <%= f.text_field :last_name, autofocus: true, class: "mr-4", style: "width: 35%" %>
+           <%= f.text_field :first_name, style: "width: 35%" %>
+          </td>
+        </tr>
+
+        <tr>
+          <td>フリガナ</td>
+          <td>
+           <%= f.text_field :last_name_kata, class: "mr-4", style: "width: 35%" %>
+           <%= f.text_field :first_name_kata, style: "width: 35%" %>
+          </td>
+        </tr>
+
+        <tr>
+          <td>郵便番号</td>
+          <td><%= f.text_field :post_code, style: "width: 35%" %></td>
+        </tr>
+
+        <tr>
+          <td>住所</td>
+          <td><%= f.text_field :address, style: "width: 100%" %></td>
+        </tr>
+
+        <tr>
+          <td>電話番号</td>
+          <td><%= f.phone_number_field :phone_number, style: "width: 35%" %></td>
+        </tr>
+
+        <tr>
+          <td>メールアドレス</td>
+          <td><%= f.email_field :email, style: "width: 35%" %></td>
+        </tr>
+
+        <tr>
+          <td>会員ステータス</td>
+          <td>
+            <%= f.radio_button :deleted_user, :true %>
+            <%= f.label :deleted_user, "有効" %>
+            <%= f.radio_button :deleted_user, :false %>
+            <%= f.label :deleted_user, "退会" %>
+          </td>
+        </tr>
+
+        <tr>
+          <td></td>
+          <td><%= f.submit "変更を保存", class: "btn btn-success" %></td>
+        </tr>
+
+      </table>
+    </div>
+  </div>
+  <% end %>
+
+</div>

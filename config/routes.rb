@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-  
+
 root to: 'customer/homes#top'
 get "customer/home/about"=>"customer/homes#about"
 
@@ -35,9 +35,9 @@ resources :users, only: [:index, :show, :edit, :update]
 resources :orders, only: [:show, :update]
 resources :orders_datails, only: [:update]
 end
-  
-  
-  
+
+
+
 # 顧客用
 # URL /customers/sign_in ...
 devise_for :customers,skip: [:passwords], controllers: {
