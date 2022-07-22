@@ -1,5 +1,5 @@
 <header class="mb-5">
-  <nav class="navbar navbar-expand-lg navbar-dark bg-warning">
+  <nav class="navbar navbar-expand-lg navbar-dark bg-success">
     <div class="container">
       <% if master_signed_in? %>
         <%= link_to "nagano_cake", master_root_path, class: "" %>
@@ -14,60 +14,60 @@
         <% if master_signed_in? %>
           <% if request.fullpath.include? "/master" %>
             <li>
-              <%= link_to "商品一覧", master_products_path, class: 'nav-link text-light btn btn-outline-light' %>
+              <%= link_to "商品一覧", master_products_path, class: 'nav-link text-success btn btn-outline-success' %>
             </li>
             <li>
-              <%=  link_to "会員一覧", master_users_path, class: 'nav-link text-light btn btn-outline-light ml-4' %>
+              <%=  link_to "会員一覧", master_users_path, class: 'nav-link text-success btn btn-outline-success ml-4' %>
             </li>
             <li>
-              <%=  link_to "注文履歴一覧", master_root_path, class: 'nav-link text-light btn btn-outline-light ml-4' %>
+              <%=  link_to "注文履歴一覧", master_root_path, class: 'nav-link text-success btn btn-outline-success ml-4' %>
             </li>
             <li>
-              <%= link_to "ジャンル一覧", master_genres_path, class: 'nav-link text-light btn btn-outline-light ml-4' %>
+              <%= link_to "ジャンル一覧", master_genres_path, class: 'nav-link text-success btn btn-outline-success ml-4' %>
             </li>
             <li>
-              <%= link_to "ログアウト", destroy_master_session_path, method: :delete, class: 'nav-link text-light btn btn-outline-light ml-4' %>
+              <%= link_to "ログアウト", destroy_master_session_path, method: :delete, class: 'nav-link text-success btn btn-outline-success ml-4' %>
             </li>
           <% else %>
             <li>
-              <%= link_to "About", customer_home_about_path, class: 'nav-link text-light btn btn-outline-light' %>
+              <%= link_to "About", customer_home_about_path, class: 'nav-link text-success btn btn-outline-success' %>
             </li>
             <li>
-              <%= link_to "商品一覧", customer_products_path, class: 'nav-link text-light btn btn-outline-light ml-4' %>
+              <%= link_to "商品一覧", customer_products_path, class: 'nav-link text-success btn btn-outline-success ml-4' %>
             </li>
             <li>
-              <%= link_to "新規登録", new_customer_registration_path, class: 'nav-link text-light btn btn-outline-light ml-4' %>
+              <%= link_to "新規登録", new_customer_registration_path, class: 'nav-link text-success btn btn-outline-success ml-4' %>
             </li>
             <li>
-              <%= link_to "ログイン", new_customer_session_path, class: 'nav-link text-light btn btn-outline-light ml-4' %>
+              <%= link_to "ログイン", new_customer_session_path, class: 'nav-link text-success btn btn-outline-success ml-4' %>
             </li>
           <% end %>
         <% elsif customer_signed_in? %>
           <div class="d-flex align-products-center text-white">ようこそ、<%= current_customer.last_name %>さん！</div>
           <li>
-            <%= link_to "マイページ", customer_current_customer_mypage_path(current_customer), class: 'nav-link text-light btn btn-outline-light ml-5' %>
+            <%= link_to "マイページ", customer_current_customer_mypage_path(current_customer), class: 'nav-link text-success btn btn-outline-success ml-5' %>
           </li>
           <li>
-            <%= link_to "商品一覧", customer_products_path, class: 'nav-link text-light btn btn-outline-light ml-4' %>
+            <%= link_to "商品一覧", customer_products_path, class: 'nav-link text-success btn btn-outline-success ml-4' %>
           </li>
           <li>
-            <%= link_to "カート", customer_shopping_carts_path, class: 'nav-link text-light btn btn-outline-light ml-4' %>
+            <%= link_to "カート", customer_shopping_carts_path, class: 'nav-link text-success btn btn-outline-success ml-4' %>
           </li>
           <li>
-            <%= link_to "ログアウト", destroy_customer_session_path, method: :delete, class: 'nav-link text-light btn btn-outline-light ml-4' %>
+            <%= link_to "ログアウト", destroy_customer_session_path, method: :delete, class: 'nav-link text-success btn btn-outline-success ml-4' %>
           </li>
         <% else %>
            <li>
-            <%= link_to "About", customer_home_about_path, class: 'nav-link text-light btn btn-outline-light' %>
+            <%= link_to "About", customer_home_about_path, class: 'nav-link text-success btn btn-outline-success' %>
           </li>
           <li>
-            <%= link_to "商品一覧", customer_products_path, class: 'nav-link text-light btn btn-outline-light ml-4' %>
+            <%= link_to "商品一覧", customer_products_path, class: 'nav-link text-success btn btn-outline-success ml-4' %>
           </li>
           <li>
-            <%= link_to "新規登録", new_customer_registration_path, class: 'nav-link text-light btn btn-outline-light ml-4' %>
+            <%= link_to "新規登録", new_customer_registration_path, class: 'nav-link text-success btn btn-outline-success ml-4' %>
           </li>
           <li>
-            <%= link_to "ログイン", new_customer_session_path, class: 'nav-link text-light btn btn-outline-light ml-4' %>
+            <%= link_to "ログイン", new_customer_session_path, class: 'nav-link text-success btn btn-outline-success ml-4' %>
           </li>
         <% end %>
         </ul>
