@@ -6,10 +6,8 @@
       <% else %>
         <%= link_to "nagano_cake", master_root_path, class: "" %>
       <% end %>
-        </button>
-        <div class="collapse navbar-collapse" id="navbarNavDropdown">
-          <ul class="navbar-nav ml-auto">
-      <ul>
+    <div class="collapse navbar-collapse" id="navbarNavDropdown">
+      <ul class="navbar-nav ml-auto">
       <% if master_signed_in? %>
         <li>
           <%= link_to master_products_path,class: 'nav-link text-light' do %>
