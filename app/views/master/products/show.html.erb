@@ -1,0 +1,52 @@
+<div class="container mt-4">
+  <div class="row">
+    <div class="col-12 mb-3">
+      <h2 class="text-center">商品詳細</h2>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-4 offset-1 text-center">
+      <%= image_tag @products.get_image(400,400) %>
+    </div>
+    <div class="col-6 offset-1">
+      <table class="table mb-4">
+        <tbody>
+          <tr>
+            <th>商品名</th>
+            <td><%= @products.name %></td>
+          </tr>
+          <tr>
+            <th>商品説明</th>
+            <td><%= @products.description %></td>
+          </tr>
+          <tr>
+            <th>ジャンル</th>
+            <td><%= link_to @products.genre.name, genre_search_productss_path(genre_id: @products.genre.id)  %></td>
+          </tr>
+          <tr>
+            <th>
+              税込価格 <br>
+              (税抜価格)
+            </th>
+            <td><%= @products.tax_price.to_s(:delimited) %> (<%= @products.price.to_s(:delimited) %>) 円</td>
+          </tr>
+          <tr>
+            <th>販売ステータス</th>
+            <td>
+              <% if @products.is_active == true %>
+                <span class="font-weight-bold text-success">販売中</span>
+              <% else %>
+                <span class="font-weight-bold text-muted">販売停止中</span>
+              <% end %>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-8 offset-5 text-center mb-5">
+      <%= link_to "編集する", edit_master_products_path(@products), class:"btn btn-success rounded-pill text-center" %>
+    </div>
+  </div>
+</div>
