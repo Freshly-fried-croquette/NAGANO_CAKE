@@ -21,7 +21,7 @@ class Master::ProductsController < ApplicationController
   
   private
   def product_params
-    params.require(:product).permit(:image, :name, :description, :genres_id, :price, :sale_status)
+    params.require(:product).permit(:image, :name, :description, :genre_id, :price, :sale_status)
   end
   
   def set_genres
