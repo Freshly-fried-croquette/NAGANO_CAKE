@@ -24,23 +24,25 @@
 <table>
   <thead>
   <tr>
+  <th>
     商品名
-  </tr>  
-  <tr>
+  </th>  
+  <th>
     単価（税込）
-  </tr> 
-  <tr>
+  </th> 
+  <th>
   　数量
-  </tr> 
-  <tr>
+  </th> 
+  <th>
     小計
-  </tr> 
-  <tr>
+  </th> 
+  <th>
     制作ステータス
-  </tr> 
-  <tr>
+  </th> 
+  <th>
     
-  </tr> 
+  </th> 
+  </tr>
   </thead>
   <tbody>
     <%= @orders.each do |order| %>
@@ -58,7 +60,7 @@
          <%= (@order_details.price)*(@order_details.quantity) %>
      </td>
      <td>
-        <%= order.make_status %>
+        <%= @order.make_status %>
      </td>
      <td>
 
