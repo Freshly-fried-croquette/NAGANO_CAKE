@@ -1,0 +1,69 @@
+<h2>注文履歴詳細</h2>
+<table>
+<tr>
+<td>購入者</td>
+<td><%= @customer.last_name%><%= @customer.first_name %></td>
+</tr>
+<tr>
+<td>注文日</td>
+<td><%= @order.created_at.strftime('%Y/%m/%d %H:%M') %></td>
+</tr>
+<tr>
+<td>配送先</td>
+<td><%= @order.adress %></td>
+</tr>
+<tr>
+<td>支払い方法</td>
+<td><%= @order.payment_method %></td>
+</tr>
+<tr>
+<td>注文ステータス</td>
+<td><%= @order.status %></td>
+</tr>
+</table>
+<table>
+  <thead>
+  <tr>
+    商品名
+  </tr>  
+  <tr>
+    単価（税込）
+  </tr> 
+  <tr>
+  　数量
+  </tr> 
+  <tr>
+    小計
+  </tr> 
+  <tr>
+    制作ステータス
+  </tr> 
+  <tr>
+    
+  </tr> 
+  </thead>
+  <tbody>
+    <%= @order.each do |order| %>
+    <tr>
+     <td>
+       <%= order.name %>
+     </td>
+     <td>
+       <%= order.price %>
+     </td>
+     <td>
+        <%= order.quantity %>
+     </td>
+     <td>
+        <%= %>
+     </td>
+     <td>
+        <%= "#{(order.price).to_i*(order.quantity).to_i)}"%>
+     </td>
+     <td>
+        <%= order.make_status %>
+     </td>
+    </tr>
+  </tbody>
+  <% end %>
+</table>
