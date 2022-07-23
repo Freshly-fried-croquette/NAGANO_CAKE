@@ -46,22 +46,22 @@
     <%= @order.each do |order| %>
     <tr>
      <td>
-       <%= order.name %>
+       <%= @order.product.name %>
      </td>
      <td>
-       <%= order.price %>
+       <%= @order_details.price %>
      </td>
      <td>
-        <%= order.quantity %>
+        <%= @order_details.quantity %>
      </td>
      <td>
-        <%= %>
-     </td>
-     <td>
-        <%= "#{(order.price).to_i*(order.quantity).to_i)}"%>
+         <%= (@order_details.price)*(@order_details.quantity) %>
      </td>
      <td>
         <%= order.make_status %>
+     </td>
+     <td>
+
      </td>
     </tr>
   </tbody>
