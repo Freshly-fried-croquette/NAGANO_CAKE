@@ -10,4 +10,8 @@ class Product < ApplicationRecord
     sale_status ? "font-weight-bold text-success":"font-weight-bold text-muted"
   end
   
+  def with_tax_price
+    (price * 1.1).floor
+  end
+  
 end
