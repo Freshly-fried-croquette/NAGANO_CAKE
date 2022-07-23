@@ -5,5 +5,10 @@ class Customer::ProductsController < ApplicationController
     @genres = Genre.all
     @products = Product.page(params[:page])
   end
-    
+
+  def show
+    @product = Product.find(params:id)
+    @cart_item =CartItem.new
+    @genres = Genre.all
+  end
 end
