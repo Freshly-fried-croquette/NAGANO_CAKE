@@ -4,7 +4,7 @@
       <div class="border">
         <div class="border text-center">ジャンル検索</div>
           <% @genres.each do |genre| %>
-            <div class="text-center"><%= link_to genre.name %></div>
+            <div class="text-center"><%= link_to genre.name, customer_genre_path(genre) %></div>
           <% end %>
         </div>
       </div>
@@ -15,7 +15,8 @@
     </div>
     <div class="row">
       <% @products.each do |product| %>
-        <div class="col card mr-2">
+        <div class="col-md-3 pt-2">
+          <div class="card">
           <%= link_to customer_product_path(product.id) do %>
             <%= image_tag product.image, size: "150x150", class:"my-2 card-img-top" %>
           <% end %>
@@ -23,6 +24,7 @@
             <%= product.name %>
           </div>
           <div class="card-text text-right">¥<%= (product.with_tax_price).to_s(:delimited) %></div>
+        </div>
         </div>
       <% end %>
     </div>

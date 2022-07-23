@@ -10,7 +10,7 @@
       <div class="border">
         <div class="border text-center">ジャンル検索</div>
           <% @genres.each do |genre| %>
-            <div class="text-center"><%= link_to genre.name %></div>
+            <div class="text-center"><%= link_to genre.name, customer_genre_path(genre) %></div>
           <% end %>
         </div>
       </div>

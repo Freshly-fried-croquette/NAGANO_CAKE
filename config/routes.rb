@@ -21,6 +21,7 @@ resources :orders, only: [:new, :create, :index]do
 end
 resources :products, only: [:index, :show]
 resources :delivery_addresses, only: [:index, :edit, :create, :update, :destroy]
+resources :genres, only: [:show]
 end
 
 
