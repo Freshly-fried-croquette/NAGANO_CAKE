@@ -10,4 +10,9 @@ class Customer::ProductsController < ApplicationController
     @cart_item =CartItem.new
     @genres = Genre.all
   end
+  
+  private
+ def product_params
+  params.require(:products).permit(:genre_id, :name, :description, :image, :price)
+ end
 end
