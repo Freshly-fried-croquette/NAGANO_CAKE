@@ -29,6 +29,7 @@ end
 
 get "master/home/top"=>"master#homes#top"
 
+
 namespace :master do
   root to: 'homes#top'
   resources :homes, only: [:top]
@@ -55,4 +56,5 @@ devise_for :master, skip: [:registrations, :passwords] ,controllers: {
 }
 
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
+
 end

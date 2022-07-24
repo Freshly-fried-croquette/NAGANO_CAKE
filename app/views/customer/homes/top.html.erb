@@ -27,7 +27,7 @@
                     <div class="card-title">
                       <%= product.name %>
                     </div>
-                    <div class="card-text text-right">¥<%= product.price %></div>
+                    <div class="card-text text-right">¥<%= (product.with_tax_price).to_s(:delimited) %>(税込)</div>
                   </div>
                 <% end %>
               </div>

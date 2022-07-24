@@ -6,7 +6,7 @@
   </div>
   <div class="row">
     <div class="col-4 offset-1 text-center">
-      <%= image_tag @product.image,size:"400x400" %>
+      <%= image_tag @product.image, size: "400x400" %>
     </div>
     <div class="col-6 offset-1">
       <table class="table mb-4">
@@ -28,7 +28,7 @@
               税込価格 <br>
               (税抜価格)
             </th>
-            <td><%= @product.with_tax_price.to_s(:delimited) %> (<%= @product.price.to_s(:delimited) %>) 円</td>
+            <td><%= (@product.with_tax_price).to_s(:delimited) %> (<%= @product.price.to_s(:delimited) %>) 円</td>
           </tr>
           <tr>
             <th>販売ステータス</th>

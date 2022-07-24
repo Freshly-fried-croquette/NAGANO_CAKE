@@ -33,11 +33,13 @@
         <%= f.label :name, "税抜価格", class: "col-sm-3" %>
         <%= f.text_field :price, class: 'col-sm-5 form-control', style: 'width: 50%' %>円
       </div>
-
-      <div class="form-check form-check-inline">
-        <%= f.label :namme, "販売ステータス" %>
-        <%= f.radio_button :sale_status, "true" %>販売中
-        <%= f.radio_button :sale_status, "false" %>販売停止中
+      
+      <div class="form-group row">
+        <span class= "col-sm-3">販売ステータス</span>
+        <%= f.radio_button :sale_status, :true %>
+        <%= f.label :sale_status, "販売中", value: :true, class: "col-sm-2"%>
+        <%= f.radio_button :sale_status, :false %>
+        <%= f.label :sale_status, "販売停止中", value: :false, class: "col-sm-2" %>
       </div>
 
       <div class="text-center">

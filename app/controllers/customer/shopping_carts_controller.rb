@@ -1,4 +1,7 @@
 class Customer::ShoppingCartsController < ApplicationController
+
+ 
+
   before_action :setup_cart_item!, only: %i[add_item update_item delete_item]
 
   # カート内アイテムの表示
@@ -44,4 +47,5 @@ class Customer::ShoppingCartsController < ApplicationController
   def cart_item_params
     params.require(:shopping_cart).permit(:product_id, :customer_id, :quantity)
   end
+
 end
