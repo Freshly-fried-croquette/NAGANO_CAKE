@@ -5,5 +5,8 @@ class Customer::OrdersController < ApplicationController
   
   def complete
   end
+  
+  def index
+  end
     
 end
