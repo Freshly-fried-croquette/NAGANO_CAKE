@@ -7,12 +7,12 @@ class Customer::ProductsController < ApplicationController
 
   def show
     @product = Product.find(params[:id])
-    @cart_item =CartItem.new
+    @cart_product =ShoppingCart.new
     @genres = Genre.all
   end
-  
-  private
- def product_params
-  params.require(:products).permit(:genre_id, :name, :description, :image, :price)
- end
+
+  def product_params
+    params.require(:products).permit(:genre_id, :name, :introduction, :image, :price)
+  end
+
 end

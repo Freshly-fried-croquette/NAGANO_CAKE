@@ -1,0 +1,41 @@
+<div class="container">
+  <div class="col-lg-7">
+    <h3 class="text-dark-50">ショッピングカート</h3>
+  </div>
+  <div class="col-lg-5">
+    <%= link_to "カートを空にする", all_destroy_customer_shopping_carts_path, method: :delete, data:{confirm: "カートの中身を全て削除してもよろしいですか？"}, class: "btn btn-danger" %>
+  </div>
+
+  <table class="table">
+    <tr>
+      <th>商品名</th>
+      <th>単価(税込)</th>
+      <th>数量</th>
+      <th>小計</th>
+      <th></th>
+    </tr>
+    <% @cart_items.each do|cart_item| %>
+      <tr>
+        <td>
+          <%= image_tag cart_item.product.image(30,30) %>
+          <% cart_item.product.name%>
+        </td>
+        <td>
+          <%= cart_item.product.add_tax_price.to_s(:delimited)%>
+        </td>
+        <td>
+          <%= form_with model: cart_item, url: customer_shopping_cart , method: :post,local: true do |f| %>
+          <%= f.number_field :quantity ,value: cart_item.quantity%>
+          <% end %>
+        </td>
+        <td>
+        </td>
+        <td>
+          <%= link_to "削除する",customer_shopping_carts_path(shopping_carts.id,shopping_carts), method: :delete %>
+        </td>
+      </tr>
+      <% @total.to_i %>
+    <% end %>
+  </table>
+
+</div>

@@ -14,7 +14,7 @@
           <%= form_with(model: @cart_product,url: cart_products_path, method: :post,local: true) do |f| %>
             <%= f.hidden_field :product_id, :value => @product.id%>
             <%= f.hidden_field :customer_id, :value => current_customer.id %>
-            <%= f.select :product_count, *[1..10], placeholder: "個数選択", class: "mx-5 my-4"%>
+            <%= f.select :quantity, *[1..10], placeholder: "個数選択", class: "mx-5 my-4"%>
             <%= f.submit "カートに入れる" , class: "btn btn-success mx-5 my-4" %>
           <% end %>
         <% end %>
