@@ -20,10 +20,10 @@ class Customer::OrdersController < ApplicationController
     elsif params[:order][:address_number] == "3"
       address_new = current_customer.addresses.new(address_params)
       if address_new.save
-        else
-          render :new
-        end
+      else
+        render :new
       end
+    end
       @cart_items = current_customer.cart_items.all
       @total = @cart_items.inject(0) { |sum, item| sum + item.sum_price }
   end

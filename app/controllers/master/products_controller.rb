@@ -7,8 +7,11 @@ class Master::ProductsController < ApplicationController
 
   def create
     @product = Product.new(product_params)
-    @product.save
-    redirect_to master_products_path
+    if @product.save
+      redirect_to master_products_path
+    else
+      redirect_to request.referer
+    end
   end
 
   def index
