@@ -1,13 +1,9 @@
 class Customer::OrdersController < ApplicationController
   
-  def index
-    @products = Product.all
-    @orders = current_customer.orders
-  end
-  
   def complete
   end
   
+
   def confirm
     @order = Order.new(order_params)
     @order.postage = 800
@@ -31,4 +27,5 @@ class Customer::OrdersController < ApplicationController
       @cart_items = current_customer.cart_items.all
       @total = @cart_items.inject(0) { |sum, item| sum + item.sum_price }
   end
+
 end

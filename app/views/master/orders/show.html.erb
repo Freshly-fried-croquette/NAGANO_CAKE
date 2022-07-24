@@ -2,7 +2,7 @@
 <table>
 <tr>
 <td>購入者</td>
-<td><%= @customer.last_name%><%= @customer.first_name %></td>
+<td><%= @order.customer.last_name%><%= @order.customer.first_name %></td>
 </tr>
 <tr>
 <td>注文日</td>
@@ -18,32 +18,34 @@
 </tr>
 <tr>
 <td>注文ステータス</td>
-<td><%= @order.status %></td>
+<td></td>
 </tr>
 </table>
 <table>
   <thead>
   <tr>
+  <th>
     商品名
-  </tr>  
-  <tr>
+  </th>  
+  <th>
     単価（税込）
-  </tr> 
-  <tr>
+  </th> 
+  <th>
   　数量
-  </tr> 
-  <tr>
+  </th> 
+  <th>
     小計
-  </tr> 
-  <tr>
+  </th> 
+  <th>
     制作ステータス
-  </tr> 
-  <tr>
+  </th> 
+  <th>
     
-  </tr> 
+  </th> 
+  </tr>
   </thead>
   <tbody>
-    <%= @order.each do |order| %>
+    <%= @orders.each do |order| %>
     <tr>
      <td>
        <%= @order.product.name %>
@@ -58,12 +60,15 @@
          <%= (@order_details.price)*(@order_details.quantity) %>
      </td>
      <td>
-        <%= order.make_status %>
+        <%= select :status,:name,OrderDetail.statuses.keys.to_a %>
+        <%= select :status,:name,OrderDetail.statuses.values.to_a %>
      </td>
      <td>
 
      </td>
     </tr>
   </tbody>
+  
+  
   <% end %>
 </table>
