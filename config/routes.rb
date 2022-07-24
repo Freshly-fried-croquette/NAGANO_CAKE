@@ -27,6 +27,7 @@ namespace :customer do
 end
 resources :genres, only: [:show]
 
+
 get "master/home/top"=>"master#homes#top"
 
 
