@@ -1,5 +1,6 @@
 class Master::HomesController < ApplicationController
   def top
-    @products = Product.all
+    @orders = Order.all
+
   end
 end

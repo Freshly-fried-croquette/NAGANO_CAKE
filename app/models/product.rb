@@ -7,7 +7,12 @@ class Product < ApplicationRecord
   validates :description, presence: true
   validates :price, presence: true
 
+  
+  def sale_status_color
+    sale_status ? "font-weight-bold text-success":"font-weight-bold text-muted"
+  end
+  
   def with_tax_price
-      (price * 1.1).floor
+    (price * 1.1).floor
   end
 end

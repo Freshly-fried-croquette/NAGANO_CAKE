@@ -1,0 +1,74 @@
+<h2>注文履歴詳細</h2>
+<table>
+<tr>
+<td>購入者</td>
+<td><%= @order.customer.last_name%><%= @order.customer.first_name %></td>
+</tr>
+<tr>
+<td>注文日</td>
+<td><%= @order.created_at.strftime('%Y/%m/%d %H:%M') %></td>
+</tr>
+<tr>
+<td>配送先</td>
+<td><%= @order.adress %></td>
+</tr>
+<tr>
+<td>支払い方法</td>
+<td><%= @order.payment_method %></td>
+</tr>
+<tr>
+<td>注文ステータス</td>
+<td></td>
+</tr>
+</table>
+<table>
+  <thead>
+  <tr>
+  <th>
+    商品名
+  </th>  
+  <th>
+    単価（税込）
+  </th> 
+  <th>
+  　数量
+  </th> 
+  <th>
+    小計
+  </th> 
+  <th>
+    制作ステータス
+  </th> 
+  <th>
+    
+  </th> 
+  </tr>
+  </thead>
+  <tbody>
+    <%= @orders.each do |order| %>
+    <tr>
+     <td>
+       <%= @order.product.name %>
+     </td>
+     <td>
+       <%= @order_details.price %>
+     </td>
+     <td>
+        <%= @order_details.quantity %>
+     </td>
+     <td>
+         <%= (@order_details.price)*(@order_details.quantity) %>
+     </td>
+     <td>
+        <%= select :status,:name,OrderDetail.statuses.keys.to_a %>
+        <%= select :status,:name,OrderDetail.statuses.values.to_a %>
+     </td>
+     <td>
+
+     </td>
+    </tr>
+  </tbody>
+  
+  
+  <% end %>
+</table>

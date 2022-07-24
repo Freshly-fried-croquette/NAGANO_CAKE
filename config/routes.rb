@@ -25,6 +25,9 @@ namespace :customer do
   resources :products, only: [:index, :show]
   resources :delivery_addresses, only: [:index, :edit, :create, :update, :destroy]
 end
+resources :genres, only: [:show]
+
+end
 
 
 get "master/home/top"=>"master#homes#top"

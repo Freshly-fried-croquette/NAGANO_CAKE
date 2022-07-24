@@ -1,21 +1,32 @@
-<table>
-  <thead>
-    <th4>ジャンル検索</th4>
-  </thead>
-  <tbody>
-    <% @genres.each do |genre| %>
-        <div><%= link_to genre.name %></div>
-    <% end %>
-  </tbody>
-</table>
-<div>
-  <h2>商品一覧（全<%= @products.count %>件）</h2>
-</div>
-</div>
-  <% @products.each do |product| %>
-    <%= image_tag product.image, size: "300x200" %>
-    <%= product.name %>
-    ¥<%= product.price %>
-  <% end %>
-  <%= paginate @products %>
+<div class="container mt-5">
+  <div class="row">
+    <div class="col-3">
+      <div class="border">
+        <div class="border text-center">ジャンル検索</div>
+          <% @genres.each do |genre| %>
+            <div class="text-center"><%= link_to genre.name, customer_genre_path(genre) %></div>
+          <% end %>
+        </div>
+      </div>
+  
+  <div class="col-9">
+    <div class="col-lg-6 offset-lg-1">
+    <h2 class="alert alert-info text-center">商品一覧（全<%= @products.count %>件）</h2>
+    </div>
+    <div class="row">
+      <% @products.each do |product| %>
+        <div class="col-md-3 pt-2">
+          <div class="card">
+          <%= link_to customer_product_path(product.id) do %>
+            <%= image_tag product.image, size: "150x150", class:"my-2 card-img-top" %>
+          <% end %>
+          <div class="card-title">
+            <%= product.name %>
+          </div>
+          <div class="card-text text-right">¥<%= (product.with_tax_price).to_s(:delimited) %></div>
+        </div>
+        </div>
+      <% end %>
+    </div>
+  </div>
 </div>
