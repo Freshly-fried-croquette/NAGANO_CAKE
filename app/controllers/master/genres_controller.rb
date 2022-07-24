@@ -9,6 +9,8 @@ class Master::GenresController < ApplicationController
     @genre = Genre.new(genre_params)
     if @genre.save
       redirect_to master_genres_path
+    else
+      redirect_to request.referer
     end
   end
   
