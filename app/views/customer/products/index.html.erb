@@ -23,10 +23,11 @@
           <div class="card-title">
             <%= product.name %>
           </div>
-          <div class="card-text text-right">¥<%= (product.with_tax_price).to_s(:delimited) %></div>
+          <div class="card-text text-right">¥<%= (product.with_tax_price).to_s(:delimited) %>(税込)</div>
         </div>
         </div>
       <% end %>
+      <div class="mt-5"><%= paginate @products %></div>
     </div>
   </div>
 </div>
