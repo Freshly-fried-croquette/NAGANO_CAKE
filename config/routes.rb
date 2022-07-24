@@ -5,35 +5,38 @@ get "customer/home/about"=>"customer/homes#about"
 
 
 namespace :customer do
-get "current_customer/unsubscribe"=>"current_customers#unsubscribe"
-patch "current_customer/withdrawal"=>"current_customers#withdrawal"
-get "current_customer/mypage"=>"current_customers#show"
-resource :current_customer, only: [:edit, :update] 
-get "shopping_carts/all_destroy"=>"shopping_carts#all_destroy"
-resources :shopping_carts, only: [:index, :update, :destroy, :create]
-resources :orders, only: [:new, :confilm, :complete, :create, :index, :show]
-resources :shopping_carts, only: [:index, :update, :destroy, :all_destroy, :create]
-resources :orders, only: [:new, :create, :index]do
-  collection do
-    get "confirm"
-    get "complete"
+  get "current_customer/unsubscribe"=>"current_customers#unsubscribe"
+  patch "current_customer/withdrawal"=>"current_customers#withdrawal"
+  get "current_customer/mypage"=>"current_customers#show"
+  resource :current_customer, only: [:edit, :update]
+  get "shopping_carts/all_destroy"=>"shopping_carts#all_destroy"
+  resources :orders, only: [:new, :confilm, :complete, :create, :index, :show]
+  resources :shopping_carts, only: [:index, :update, :destroy, :create] do
+   collection do
+     delete 'all_destroy'
+   end
   end
-end
-resources :products, only: [:index, :show]
-resources :delivery_addresses, only: [:index, :edit, :create, :update, :destroy]
+  resources :orders, only: [:new, :create, :index]do
+    collection do
+      get "confirm"
+      get "complete"
+    end
+  end
+  resources :products, only: [:index, :show]
+  resources :delivery_addresses, only: [:index, :edit, :create, :update, :destroy]
 end
 
 
 get "master/home/top"=>"master#homes#top"
 
 namespace :master do
-root to: 'homes#top'
-resources :homes, only: [:top]
-resources :products, only: [:index, :new, :create, :show, :edit, :update]
-resources :genres, only: [:index, :create, :edit, :update, :destroy]
-resources :users, only: [:index, :show, :edit, :update]
-resources :orders, only: [:show, :update]
-resources :orders_datails, only: [:update]
+  root to: 'homes#top'
+  resources :homes, only: [:top]
+  resources :products, only: [:index, :new, :create, :show, :edit, :update]
+  resources :genres, only: [:index, :create, :edit, :update, :destroy]
+  resources :users, only: [:index, :show, :edit, :update]
+  resources :orders, only: [:show, :update]
+  resources :orders_datails, only: [:update]
 end
 
 
