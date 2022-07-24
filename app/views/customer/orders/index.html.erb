@@ -4,16 +4,20 @@
    <th>注文日</th>
    <th>配送先</th>
    <th>注文商品</th>
-   <th></th>
-   <th></th>
-   <th></th>
+   <th>支払い金額</th>
+   <th>ステータス</th>
+   <th>注文詳細</th>
   </tr>
+  <%= @orders.each do |order|%>
   <tr>
-   <td></td>
-   <td></td>
-   <td></td>
-   <td></td>
-   <td></td>
-   <td></td>
+   <td><%= oredr.created_at %></td>
+   <td><%= order.customer.adrss %></td>
+   <td><%= order.products.each do  |product|%>
+       <% end %>
+   </td>
+   <td><%= order.amount_billed  %></td>
+   <td><%= battle.status %></td>
+   <td><%= link_to "表示する" ,master_order_path  %></td>
   </tr>
+  <% end %>
 </table>
