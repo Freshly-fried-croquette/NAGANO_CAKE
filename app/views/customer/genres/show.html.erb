@@ -11,7 +11,7 @@
       
       <div class="col-9">
         <div class="col-lg-6 offset-lg-1">
-          <h2 class="alert alert-info text-center">商品一覧（全<%= @genre.products.count %>件）</h2>
+          <h2 class="alert alert-info text-center"><%= @genre.name %>一覧（全<%= @genre.products.count %>件）</h2>
         </div>
         <div class="row">
           <% @genre.products.each do |product| %>
@@ -23,7 +23,7 @@
                 <div class="card-title">
                 <%= product.name %>
                 </div>
-                <div class="card-text text-right">¥<%= (product.with_tax_price).to_s(:delimited) %></div>
+                <div class="card-text text-right">¥<%= (product.with_tax_price).to_s(:delimited) %>(税込)</div>
               </div>
             </div>
           <% end %>
