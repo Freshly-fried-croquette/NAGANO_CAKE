@@ -1,5 +1,5 @@
 class Customer::GenresController < ApplicationController
-    def show
+  def show
     @genres = Genre.all
     @genre = Genre.find(params[:id])
   end

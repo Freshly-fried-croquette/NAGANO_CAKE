@@ -11,8 +11,6 @@ get "current_customer/mypage"=>"current_customers#show"
 resource :current_customer, only: [:edit, :update] 
 get "shopping_carts/all_destroy"=>"shopping_carts#all_destroy"
 resources :shopping_carts, only: [:index, :update, :destroy, :create]
-resources :orders, only: [:new, :confilm, :complete, :create, :index, :show]
-resources :shopping_carts, only: [:index, :update, :destroy, :all_destroy, :create]
 resources :orders, only: [:new, :create, :index]do
   collection do
     get "confirm"
