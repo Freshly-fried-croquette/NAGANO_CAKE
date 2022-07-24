@@ -1,7 +1,7 @@
 <div class="container">
 <div class="row">
 <div class="col-lg-4 offset-lg-1 mb-5 ">
- 
+
  <h2 class= "alert alert-info text-center">商品一覧</h2>
  <div>
   <%= link_to new_master_product_path do %>
@@ -19,12 +19,12 @@
    </tr>
   </thead>
   <tbody>
-  <%= @products.each do |product| %>
+  <% @products.each do |product| %>
    <tr>
     <td><%= product.id %></td>
     <td><%= product.name %></td>
     <td><%= product.price %></td>
-    <td><%= product.genre %></td>
+    <td><%= product.genre.name %></td>
     <td><%= product.sale_status %></td>
    </tr>
   <% end %>
