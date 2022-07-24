@@ -1,31 +1,39 @@
 <div class="container">
+  <p class="alert alert-info text-center">
+    ようこそ、ながのCAKEへ！<br>
+    このサイトは、ケーキ販売のECサイトになります。<br>
+    会員でない方も商品の閲覧はできますが、<br>
+    購入には会員登録が必要になります。
+  </p>
   <div class="row">
-    <div class="col-lg-3">
+    <div class="col-3">
       <div class="border">
         <div class="border text-center">ジャンル検索</div>
-        <% @genres.each do |genre| %>
-          <div class="genre ml-4"><%= link_to genre.name %></div>
-        <% end %>
+          <% @genres.each do |genre| %>
+            <div class="text-center"><%= link_to genre.name, customer_genre_path(genre) %></div>
+          <% end %>
+        </div>
       </div>
-    </div>
-    <div>
-      ようこそ、ながのCAKEへ！</br>
-      このサイトは、ケーキ販売のECサイトになります。</br>
-      会員でない方も商品の閲覧はできますが、</br>
-      購入には会員登録が必要になります。</br>
-    </div>
-    <div>
-      <h3>新着商品</h3>
-    </div>
-    <div>
-    　<% @products.each do |product| %>
-        <%= image_tag product.image, size: "300x200" %>
-        <%= product.name %>
-        ¥<%= product.price %>
-      <% end %>
-    </div>
-    <div>
-      <%= link_to "全ての商品を見る >", customer_products_path %>
+      <div class="col-9">
+        <%= image_tag "main.jpg" , class: "main_image" %>
+            <div class="col-lg-4 offset-lg-1">
+              <h2 class="my-3 alert alert-danger text-center">新着商品</h2></div>
+              <div class="row">
+                <% @products.each do |product| %>
+                  <div class="col card mr-2">
+                    <%= link_to customer_product_path(product.id) do %>
+                      <%= image_tag product.image, size: "150x150", class:"my-2 card-img-top" %>
+                    <% end %>
+                    <div class="card-title">
+                      <%= product.name %>
+                    </div>
+                    <div class="card-text text-right">¥<%= product.price %></div>
+                  </div>
+                <% end %>
+              </div>
+            </div>
+          </div>
+    <div class="text-right mt-4">
+      <u><%= link_to "全ての商品を見る >", customer_products_path %></u>
     </div>
   </div>
-</div>

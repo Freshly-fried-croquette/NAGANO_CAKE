@@ -1,8 +1,35 @@
-<% @products.each do |product| %>
-  <tr>
+<div class="container">
+<div class="row">
+<div class="col-lg-4 offset-lg-1 mb-5 ">
+ 
+ <h2 class= "alert alert-info text-center">商品一覧</h2>
+ <div>
+  <%= link_to new_master_product_path do %>
+   <div>a</div>
+  <% end %>
+ </div>
+ <table>
+  <thead>
+   <tr>
+    <th>商品ID</th>
+    <th>商品名</th>
+    <th>税込価格</th>
+    <th>ジャンル</th>
+    <th>ステータス</th>
+   </tr>
+  </thead>
+  <tbody>
+  <%= @products.each do |product| %>
+   <tr>
     <td><%= product.id %></td>
-    <td><%= link_to product.name, master_product_path(product) %></td>
-    <td><%= product.price.to_s(:delimited) %></td>
-    <td><%= product.genre.name %></td>
-  </tr>
-<% end %>
+    <td><%= product.name %></td>
+    <td><%= product.price %></td>
+    <td><%= product.genre %></td>
+    <td><%= product.sale_status %></td>
+   </tr>
+  <% end %>
+  </tbody>
+</table>
+</div>
+</div>
+</div>

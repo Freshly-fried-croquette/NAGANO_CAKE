@@ -1,9 +1,8 @@
 class Customer::ProductsController < ApplicationController
 
   def index
-    @products = Product.all
     @genres = Genre.all
-    @products = Product.page(params[:page])
+    @products = Product.all.page(params[:page]).per(8)
   end
 
   def show
@@ -15,4 +14,5 @@ class Customer::ProductsController < ApplicationController
   def product_params
     params.require(:products).permit(:genre_id, :name, :introduction, :image, :price)
   end
+
 end
