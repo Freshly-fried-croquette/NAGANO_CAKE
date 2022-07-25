@@ -20,10 +20,10 @@
           <% @orders.each do |order| %>
             <tr>
               <td><%= link_to order.created_at.strftime('%Y/%m/%d %H:%M:%S'), master_order_path(order) %></td>
-              <td><%= link_to "#{order.customer.last_name + order.customer.first_name}",master_customer_orders_path(order.customer.id) %></td>
+              <td><%= "#{order.customer.last_name + order.customer.first_name}" %></td>
               <% @product_count = 0 %>
               <%  order.order_details.each do |detail| %>
-                <% @product_count += detail.product_count %>
+                <% @product_count += detail.quantity %>
               <% end %>
               <td><%= @product_count %></td>
               <td><%= order.order_status %></td>
