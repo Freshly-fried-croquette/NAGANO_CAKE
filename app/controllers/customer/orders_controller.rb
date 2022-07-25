@@ -12,7 +12,6 @@ class Customer::OrdersController < ApplicationController
     @order.postage = 800
     # 初期値＝（送料＋合計金額）
     @order.amount_billed = cart_items.inject(@order.postage) { |sum, item| sum + item.sum_of_price }
-    # binding.pry
     if @order.save
       cart_items.each do |cart|
         order_item = OrderDetail.new
@@ -22,18 +21,16 @@ class Customer::OrdersController < ApplicationController
         order_item.price = cart.product.price
         order_item.save
       end
-      redirect_to confirm_customer_orders_path
+      redirect_to complete_customer_orders_path
       cart_items.destroy_all
     else
       @order = Order.new(order_params)
       render :new
     end
   end
-
+  
   def complete
   end
-
-
 
   def confirm
     @order = Order.new(order_params)
@@ -49,19 +46,18 @@ class Customer::OrdersController < ApplicationController
       @order.postal_code = @address.postal_code
       @order.name = @address.name
       @order.payment_method = params[:order][:payment_method]
-
+      
     elsif params[:order][:address_number] == "3"
-
-    else
+        
+    else 
       render :new
     end
       @cart_items = current_customer.shopping_carts.all
-      # @total = @cart_items.inject(0) { |sum, item| sum + item.sum_price }
 
   end
     private
   def order_params
-    params.require(:order).permit(:name, :address, :amount_billed, :payment_method, :postal_code)
+    params.require(:order).permit(:name, :address, :amount_billed, :payment_method, :postal_code, :created_at)
   end
   def address_params
     params.require(:order).permit(:postal_code, :address_name, :address )
