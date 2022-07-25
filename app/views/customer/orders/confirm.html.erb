@@ -13,12 +13,13 @@
       <% @cart_items.each do |cart| %>
       <tr>
         <th class = "align-middle">
-          <%= image_tag cart.item.get_item_image(30,30) %>
-          <%= cart.item.name %></th>
-        <td><%= (cart.item.with_tax_price).to_s(:delimited) %></td>
-        <td><%= cart.item_count %></td>
-        <td><%= (((cart.item.price*cart.item_count)*1.1).to_i).to_s(:delimited) %></td>
+          <%= image_tag cart.product.image, size: "30x30" %>
+          <%= cart.product.name %></th>
+        <td><%= (cart.product.with_tax_price).to_s(:delimited) %></td>
+        <td><%= cart.quantity %></td>
+        <td><%= (((cart.product.price*cart.quantity)*1.1).to_i).to_s(:delimited) %></td>
       </tr>
+      <% end %>
     </table>
   </div>
 
@@ -32,7 +33,7 @@
         <td class = table-secondary>商品合計</td>
         <% @total = 0 %>
         <% @cart_items.each do |cart| %>
-          <% @total += cart.item.price*cart.item_count %>
+          <% @total += cart.product.price*cart.quantity %>
         <% end %>
         <td><%= (@total*1.1).floor.to_s(:delimited) %></td>
       </tr>
@@ -47,27 +48,27 @@
 <table>
   <tr>
     <th>支払い方法</th>
-    <td><%= @order.payment_method_i18n %></td>
+    <td><%= @order.payment_method %></td>
   </tr>
   <tr>
     <th>お届け先</th>
     <td>
       〒<%= @order.postal_code %>
       <%= @order.address %><br>
-      <%= @order.address_name %>
+      <%= @order.name %>
     </td>
   </tr>
 </table>
-<%= form_with model: @order, local: true do |f| %>
- <div class = "row">
-  <div class = "col-lg-10 offset-lg-1 mb-3  text-center ax-auto">
-   <%= f.hidden_field :address_name %>
+<%= form_with model: @order, url: customer_orders_path, method: :post, local: true do |f| %>
+ <div>
+  <div>
+   <%= f.hidden_field :name %>
    <%= f.hidden_field :address %>
    <%= f.hidden_field :payment_method %>
    <%= f.hidden_field :postal_code %>
    <%= f.hidden_field :postage %>
-   <%= f.hidden_field :billing_amount, value: @total %>
-   <%= f.submit "注文を確定する", class: "btn btn-success", style: "width: 15%" %>
+   <%= f.hidden_field :amount_billed, value: @total %>
+   <%= f.submit "注文を確定する", class: "btn btn-success" %>
   </div>
  </div>
 <% end %>
