@@ -18,7 +18,7 @@ namespace :customer do
   end
   resources :orders, only: [:new, :create, :index]do
     collection do
-      get "confirm"
+      post "confirm"
       get "complete"
     end
   end

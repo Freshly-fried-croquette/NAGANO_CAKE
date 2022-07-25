@@ -4,7 +4,7 @@
       <h3>注文情報入力</h3>
     </div>
   </div>
-  <%= form_with model: @order, url:customer_orders_path, method: :post, local: true do |f| %>
+  <%= form_with model: @order, url:confirm_customer_orders_path, method: :post, local: true do |f| %>
   <div class = "row">
     <legend class="">支払方法</legend>
     <div class = "col-sm-10">
@@ -38,8 +38,8 @@
       <%= f.label :address_number_3, "新しいお届け先", class: "" %>
       <table class = "table table-borderless table-sm">
         <tr>
-          <td style = "width: 30%"><%= f.label :post_code, "郵便番号(ハイフンなし)" %></td>
-          <td><%= f.text_field :post_code, placeholder: "1234567" %></td>
+          <td style = "width: 30%"><%= f.label :postal_code, "郵便番号(ハイフンなし)" %></td>
+          <td><%= f.text_field :postal_code, placeholder: "1234567" %></td>
         </tr>
         <tr>
           <td><%= f.label :address, "住所" %></td>
