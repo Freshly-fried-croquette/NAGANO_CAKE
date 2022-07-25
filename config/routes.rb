@@ -34,7 +34,7 @@ namespace :master do
   resources :products, only: [:index, :new, :create, :show, :edit, :update]
   resources :genres, only: [:index, :create, :edit, :update, :destroy]
   resources :users, only: [:index, :show, :edit, :update]
-  resources :orders, only: [:show, :update]
+  resources :orders, only: [:show,:update]
   resources :orders_datails, only: [:update]
 end
 
