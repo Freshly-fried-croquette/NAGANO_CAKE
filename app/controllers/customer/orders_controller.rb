@@ -40,8 +40,8 @@ class Customer::OrdersController < ApplicationController
     @order.postage = 800
     if params[:order][:address_number] == "1"
       @order.address = current_customer.address
-      @order.postal_code = current_customer.postal_code
-      @order.address_name = current_customer.last_name + current_customer.first_name
+      @order.postal_code = current_customer.post_code
+      @order.name = current_customer.last_name + current_customer.first_name
       
     elsif params[:order][:address_number] == "2"
       @address = DeliveryAddress.find(params[:order][:registered])
