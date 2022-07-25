@@ -1,11 +1,13 @@
 <div class = "container">
   <div clas = "row">
-    <h3>マイページ</h3>
+    <div class="col-2 mb-4">
+      <h3 class="table-active text-center">マイページ</h3>
+    </div>
   </div>
   <div class = "row">
     <div class = "col-lg-7 mb-4">
         登録情報
-        <%= link_to "編集する", edit_customer_current_customer_path, class: "btn btn-success ml-4" %>
+        <%= link_to "編集する", edit_customer_current_customer_path, class: "right btn btn-success ml-4" %>
     </div>
   </div>
   <div class = "row">

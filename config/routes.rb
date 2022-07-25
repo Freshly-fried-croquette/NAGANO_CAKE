@@ -10,7 +10,6 @@ namespace :customer do
   get "current_customer/mypage"=>"current_customers#show"
   resource :current_customer, only: [:edit, :update]
   get "shopping_carts/all_destroy"=>"shopping_carts#all_destroy"
-  resources :orders, only: [:new, :confilm, :complete, :create, :index, :show]
   resources :shopping_carts, only: [:index, :update, :destroy, :create] do
    collection do
      delete 'all_destroy'
