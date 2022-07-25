@@ -12,36 +12,21 @@
       <div class="collapse navbar-collapse" id="navbarNavDropdown">
         <ul class="navbar-nav ml-auto">
         <% if master_signed_in? %>
-          <% if request.fullpath.include? "/master" %>
-            <li>
-              <%= link_to "商品一覧", master_products_path, class: 'nav-link text-light' %>
-            </li>
-            <li>
-              <%=  link_to "会員一覧", master_users_path, class: 'nav-link text-light ml-4' %>
-            </li>
-            <li>
-              <%=  link_to "注文履歴一覧", master_root_path, class: 'nav-link text-lightml-4' %>
-            </li>
-            <li>
-              <%= link_to "ジャンル一覧", master_genres_path, class: 'nav-link text-light ml-4' %>
-            </li>
-            <li>
-              <%= link_to "ログアウト", destroy_master_session_path, method: :delete, class: 'nav-link text-light ml-4' %>
-            </li>
-          <% else %>
-            <li>
-              <%= link_to "About", customer_home_about_path, class: 'nav-link text-light' %>
-            </li>
-            <li>
-              <%= link_to "商品一覧", customer_products_path, class: 'nav-link text-light ml-4' %>
-            </li>
-            <li>
-              <%= link_to "新規登録", new_customer_registration_path, class: 'nav-link text-light ml-4' %>
-            </li>
-            <li>
-              <%= link_to "ログイン", new_customer_session_path, class: 'nav-link text-light ml-4' %>
-            </li>
-          <% end %>
+          <li>
+            <%= link_to "商品一覧", master_products_path, class: 'nav-link text-light' %>
+          </li>
+          <li>
+            <%=  link_to "会員一覧", master_users_path, class: 'nav-link text-light ml-4' %>
+          </li>
+          <li>
+            <%=  link_to "注文履歴一覧", master_root_path, class: 'nav-link text-lightml-4' %>
+          </li>
+          <li>
+            <%= link_to "ジャンル一覧", master_genres_path, class: 'nav-link text-light ml-4' %>
+          </li>
+          <li>
+            <%= link_to "ログアウト", destroy_master_session_path, method: :delete, class: 'nav-link text-light ml-4' %>
+          </li>
         <% elsif customer_signed_in? %>
           <div class="d-flex align-products-center text-white">ようこそ、<%= current_customer.first_name_kana %>さん！</div>
           <li>

@@ -29,11 +29,11 @@ class Customer::OrdersController < ApplicationController
       render :new
     end
   end
-  
+
   def complete
   end
-  
-  
+
+
 
   def confirm
     @order = Order.new(order_params)
@@ -42,18 +42,18 @@ class Customer::OrdersController < ApplicationController
       @order.address = current_customer.address
       @order.postal_code = current_customer.postal_code
       @order.address_name = current_customer.last_name + current_customer.first_name
-      
+
     elsif params[:order][:address_number] == "2"
       @address = DeliveryAddress.find(params[:order][:registered])
       @order.address = @address.address
       @order.postal_code = @address.postal_code
       @order.name = @address.name
       @order.payment_method = params[:order][:payment_method]
-      
+
     elsif params[:order][:address_number] == "3"
-        
-      else 
-        render :new
+
+    else
+      render :new
     end
       @cart_items = current_customer.shopping_carts.all
       # @total = @cart_items.inject(0) { |sum, item| sum + item.sum_price }
