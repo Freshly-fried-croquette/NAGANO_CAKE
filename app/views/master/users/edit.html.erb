@@ -6,7 +6,7 @@
     </div>
   </div>
 
-  <%= form_with model:[:master, @user] do |f| %>
+  <%= form_with model:[:master, @user], url:master_user_path, method: :patch do |f| %>
   <div class  = "row">
     <div class = "col-lg-10 mb-4">
       <table class = "table table-borderless">
@@ -29,8 +29,8 @@
         <tr>
           <td>フリガナ</td>
           <td>
-           <%= f.text_field :last_name_kata, class: "mr-4", style: "width: 35%" %>
-           <%= f.text_field :first_name_kata, style: "width: 35%" %>
+           <%= f.text_field :last_name_kana, class: "mr-4", style: "width: 35%" %>
+           <%= f.text_field :first_name_kana, style: "width: 35%" %>
           </td>
         </tr>
 
@@ -46,7 +46,7 @@
 
         <tr>
           <td>電話番号</td>
-          <td><%= f.phone_number_field :phone_number, style: "width: 35%" %></td>
+          <td><%= f.telephone_field :phone_number, style: "width: 35%" %></td>
         </tr>
 
         <tr>
