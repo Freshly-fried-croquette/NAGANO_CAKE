@@ -14,7 +14,7 @@ namespace :customer do
      delete 'all_destroy'
    end
   end
-  resources :orders, only: [:new, :create, :index]do
+  resources :orders, only: [:new, :create, :index,:show]do
     collection do
       post "confirm"
       get "complete"

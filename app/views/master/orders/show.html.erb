@@ -10,7 +10,7 @@
 </tr>
 <tr>
 <td>配送先</td>
-<td><%= @order.adress %></td>
+<td><%= @order.address %></td>
 </tr>
 <tr>
 <td>支払い方法</td>
@@ -18,7 +18,9 @@
 </tr>
 <tr>
 <td>注文ステータス</td>
-<td></td>
+<td>
+  <%= select :status,:name,Order.order_statuses.keys.to_a %>
+</td>
 </tr>
 </table>
 <table>
@@ -26,49 +28,73 @@
   <tr>
   <th>
     商品名
-  </th>  
+  </th>
   <th>
     単価（税込）
-  </th> 
+  </th>
   <th>
   　数量
-  </th> 
+  </th>
   <th>
     小計
-  </th> 
+  </th>
   <th>
     制作ステータス
-  </th> 
+  </th>
   <th>
-    
-  </th> 
+
+  </th>
   </tr>
   </thead>
   <tbody>
-    <%= @orders.each do |order| %>
+    <% @order_details.each do |order_details| %>
     <tr>
      <td>
-       <%= @order.product.name %>
+       <%= order_details.products.name %>
      </td>
      <td>
-       <%= @order_details.price %>
+       <%= order_details.price %>
      </td>
      <td>
-        <%= @order_details.quantity %>
+        <%= order_details.quantity %>
      </td>
      <td>
-         <%= (@order_details.price)*(@order_details.quantity) %>
+         <%= (order_details.price)*(order_details.quantity) %>
      </td>
      <td>
-        <%= select :status,:name,OrderDetail.statuses.keys.to_a %>
-        <%= select :status,:name,OrderDetail.statuses.values.to_a %>
+         <%= select :status,:name,OrderDetail.make_statuses.keys.to_a %>
      </td>
      <td>
 
      </td>
     </tr>
   </tbody>
-  
-  
   <% end %>
+</table>
+
+<table>
+  <tr>
+    <th>
+      商品合計
+    </th>
+    <td>
+
+    </td>
+  </tr>
+  <tr>
+    <th>
+      送料
+    </th>
+    <td>
+      800円
+    </td>
+  </tr>
+  <tr>
+    <th>
+      請求金額合計
+    </th>
+    <td>
+        <%= @order.amount_billed %>
+    </td>
+  </tr>
 </table>

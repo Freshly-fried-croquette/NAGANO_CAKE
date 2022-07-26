@@ -8,16 +8,14 @@
    <th>ステータス</th>
    <th>注文詳細</th>
   </tr>
-  <%= @orders.each do |order|%>
+  <% @orders.each do |order|%>
   <tr>
-   <td><%= oredr.created_at %></td>
-   <td><%= order.customer.adrss %></td>
-   <td><%= order.products.each do  |product|%>
-       <% end %>
-   </td>
+   <td><%= order.created_at %></td>
+   <td><%= order.customer.address %></td>
+   <td><%= order.products.name %></td>
    <td><%= order.amount_billed  %></td>
-   <td><%= @order_details.status %></td>
-   <td><%= link_to "表示する" ,master_order_path  %></td>
+   <td><%= order.order_status %></td>
+   <td><%= link_to "表示する" , customer_order_path(order)  %></td>
   </tr>
   <% end %>
 </table>

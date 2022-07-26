@@ -28,7 +28,7 @@ class Customer::OrdersController < ApplicationController
       render :new
     end
   end
-  
+
   def complete
   end
 
@@ -39,21 +39,29 @@ class Customer::OrdersController < ApplicationController
       @order.address = current_customer.address
       @order.postal_code = current_customer.post_code
       @order.name = current_customer.last_name + current_customer.first_name
-      
+
     elsif params[:order][:address_number] == "2"
       @address = DeliveryAddress.find(params[:order][:registered])
       @order.address = @address.address
       @order.postal_code = @address.postal_code
       @order.name = @address.name
       @order.payment_method = params[:order][:payment_method]
-      
+
     elsif params[:order][:address_number] == "3"
-        
-    else 
+
+    else
       render :new
     end
       @cart_items = current_customer.shopping_carts.all
 
+  end
+  def index
+    @orders = Order.all
+    @products = order.products
+  end
+  def show
+     @order = Order.find(params[:id])
+     @order_details = @order.order_details
   end
     private
   def order_params
@@ -62,4 +70,5 @@ class Customer::OrdersController < ApplicationController
   def address_params
     params.require(:order).permit(:postal_code, :address_name, :address )
   end
+  
 end
