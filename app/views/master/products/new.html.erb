@@ -7,44 +7,44 @@
 
   <div class="row">
     <div class="col-lg-7 mx-auto">
-      <%= form_with model: @product, url: master_products_path, method: :product do |f| %>
+      <%= form_with model: @product, url: master_products_path, method: :post do |f| %>
 
-      <div class="form-group row">
-        <%= f.label :name, "商品画像", class: "col-sm-3" %>
-        <%= f.file_field :image, accept: "image/*", class: "col-sm-7 form-control-file" %>
-      </div>
+        <div class="form-group row">
+          <%= f.label :name, "商品画像", class: "col-sm-3" %>
+          <%= f.file_field :image, accept: "image/*", class: "col-sm-7 form-control-file" %>
+        </div>
 
-      <div class="form-group row">
-        <%= f.label :name, "商品名", class: "col-sm-3" %>
-        <%= f.text_field :name, placeholder: "商品名", class: 'col-sm-7 form-control', style: 'width: 50%' %>
-      </div>
+        <div class="form-group row">
+          <%= f.label :name, "商品名", class: "col-sm-3" %>
+          <%= f.text_field :name, placeholder: "商品名", class: 'col-sm-7 form-control', style: 'width: 50%' %>
+        </div>
 
-      <div class="form-group row">
-        <%= f.label :name, "商品説明", class: "col-sm-3" %>
-        <%= f.text_area :description, placeholder: "ここに説明文を記述します", class: 'col-sm-7 form-control', style: 'w-50' %>
-      </div>
+        <div class="form-group row">
+          <%= f.label :name, "商品説明", class: "col-sm-3" %>
+          <%= f.text_area :description, placeholder: "ここに説明文を記述します", class: 'col-sm-7 form-control', style: 'w-50' %>
+        </div>
 
-      <div class="form-group row">
-        <%= f.label :name, "ジャンル", class: "col-sm-3" %>
-        <%= f.collection_select :genre_id, @genres, :id, :name, {include_blank: "--選択してください--"}, class: 'col-sm-7 form-control' , style: 'width: 50%' %>
-      </div>
+        <div class="form-group row">
+          <%= f.label :name, "ジャンル", class: "col-sm-3" %>
+          <%= f.collection_select :genre_id, @genres, :id, :name, {include_blank: "--選択してください--"}, class: 'col-sm-7 form-control' , style: 'width: 50%' %>
+        </div>
 
-      <div class="form-group row">
-        <%= f.label :name, "税抜価格", class: "col-sm-3" %>
-        <%= f.text_field :price, class: 'col-sm-5 form-control', style: 'width: 50%' %>円
-      </div>
-      
-      <div class="form-group row">
-        <span class= "col-sm-3">販売ステータス</span>
-        <%= f.radio_button :sale_status, :true %>
-        <%= f.label :sale_status, "販売中", value: :true, class: "col-sm-2"%>
-        <%= f.radio_button :sale_status, :false %>
-        <%= f.label :sale_status, "販売停止中", value: :false, class: "col-sm-2" %>
-      </div>
+        <div class="form-group row">
+          <%= f.label :name, "税抜価格", class: "col-sm-3" %>
+          <%= f.text_field :price, class: 'col-sm-5 form-control', style: 'width: 50%' %>円
+        </div>
 
-      <div class="text-center">
-        <%= f.submit '新規投稿', class:"btn btn-success" %>
-      </div>
+        <div class="form-group row">
+          <span class= "col-sm-3">販売ステータス</span>
+          <%= f.radio_button :sale_status, :true %>
+          <%= f.label :sale_status, "販売中", value: :true, class: "col-sm-2"%>
+          <%= f.radio_button :sale_status, :false %>
+          <%= f.label :sale_status, "販売停止中", value: :false, class: "col-sm-2" %>
+        </div>
+
+        <div class="text-center">
+          <%= f.submit '新規投稿', class:"btn btn-success" %>
+        </div>
 
       <% end %>
     </div>
