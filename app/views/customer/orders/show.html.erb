@@ -55,6 +55,7 @@
                 </thead>
                 <% @products.each do |product| %>
                     <tbody>
+                      
                         <td><%= product.item.name %></td>
                         <td><%= product.tax_include_price %></td>
                         <td><%= product.amount %></td>
