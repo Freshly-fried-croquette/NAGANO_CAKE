@@ -50,13 +50,12 @@ ActiveRecord::Schema.define(version: 2022_07_23_042508) do
     t.string "address", null: false
     t.string "post_code", null: false
     t.string "phone_number", null: false
-    t.boolean "deleted_user", default: true, null: false
+    t.boolean "deleted_user", default: false, null: false
     t.string "reset_password_token"
     t.datetime "reset_password_sent_at"
     t.datetime "remember_created_at"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.boolean "is_deleted", default: false
     t.index ["email"], name: "index_customers_on_email", unique: true
     t.index ["reset_password_token"], name: "index_customers_on_reset_password_token", unique: true
   end

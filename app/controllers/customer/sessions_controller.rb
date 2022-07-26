@@ -15,7 +15,7 @@ class Customer::SessionsController < Devise::SessionsController
   def customer_state
     @customer = Customer.find_by(email: params[:customer][:email].downcase)
     if @customer
-     if @customer.valid_password?(params[:customer][:password]) && (@customer.active_for_authentication? == false)
+     if @customer.valid_password?(params[:customer][:password]) && (@customer.deleted_user == true)
       flash[:error] = "退会済みです。"
       redirect_to root_path
      else
