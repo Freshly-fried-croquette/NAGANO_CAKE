@@ -56,8 +56,7 @@ class Customer::OrdersController < ApplicationController
 
   end
   def index
-    @orders = Order.all
-    @products = order.products
+    @orders = current_customer.orders
   end
   def show
      @order = Order.find(params[:id])
@@ -70,5 +69,5 @@ class Customer::OrdersController < ApplicationController
   def address_params
     params.require(:order).permit(:postal_code, :address_name, :address )
   end
-  
+
 end
