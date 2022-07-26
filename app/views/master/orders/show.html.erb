@@ -53,13 +53,13 @@
        <%= order_details.product.name %>
      </td>
      <td>
-       <%= (rder_details.price*1.1).round %>
+       <%= (order_details.price*1.1).round %>
      </td>
      <td>
         <%= order_details.quantity %>
      </td>
      <td>
-         <%= (order_details.price)*(order_details.quantity) %>
+         <%= ((order_details.price)*(order_details.quantity)*1.1).round %>
      </td>
      <td>
          <%= select :status,:name,OrderDetail.make_statuses.keys.to_a %>
@@ -78,7 +78,7 @@
       商品合計
     </th>
     <td>
-
+      <%= @order.amount_billed -800 %>円
     </td>
   </tr>
   <tr>
@@ -94,7 +94,7 @@
       請求金額合計
     </th>
     <td>
-        <%= @order.amount_billed %>
+        <%= @order.amount_billed %>円
     </td>
   </tr>
 </table>
