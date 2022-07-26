@@ -2,6 +2,8 @@ class Product < ApplicationRecord
   has_one_attached :image
   has_many :shopping_carts
   belongs_to :genre
+  belongs_to :order
+  belongs_to :order_detail
 
   validates :name, presence: true
   validates :description, presence: true
