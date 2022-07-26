@@ -62,7 +62,7 @@
         <%= order_details.quantity %>
      </td>
      <td>
-         <%= (order_details.price)*(order_details.quantity) %>
+         <%= ((order_details.price)*(order_details.quantity)*1.1).round %>
      </td>
      <td>
        <div>
@@ -83,7 +83,7 @@
       商品合計
     </th>
     <td>
-      <%= (@order.amount_billed) -800 %>
+
     </td>
   </tr>
   <tr>
@@ -99,7 +99,7 @@
       請求金額合計
     </th>
     <td>
-        <%= @order.amount_billed %>
+        <%= @order.amount_billed %>円
     </td>
   </tr>
 </table>
