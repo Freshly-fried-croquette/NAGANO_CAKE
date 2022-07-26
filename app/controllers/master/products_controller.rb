@@ -8,7 +8,7 @@ class Master::ProductsController < ApplicationController
   def create
     @product = Product.new(product_params)
     if @product.save
-      redirect_to master_products_path
+      redirect_to master_product_path(@product)
     else
       redirect_to request.referer
     end
