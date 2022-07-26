@@ -50,23 +50,23 @@
   </tr>
   </thead>
   <tbody>
-    <% @order_details.each do |order_details| %>
+    <% @order_details.each do |order_detail| %>
     <tr>
      <td>
-       <%= order_details.product.name %>
+       <%= order_detail.product.name %>
      </td>
      <td>
-       <%= (order_details.price*1.1).round %>
+       <%= (order_detail.price*1.1).round %>
      </td>
      <td>
-        <%= order_details.quantity %>
+        <%= order_detail.quantity %>
      </td>
      <td>
-         <%= ((order_details.price)*(order_details.quantity)*1.1).round %>
+         <%= ((order_detail.price)*(order_detail.quantity)*1.1).round %>
      </td>
      <td>
        <div>
-         <%= form_with model: order_details, url: master_order_path , method: :patch,local: true do |f| %>
+         <%= form_with model: order_detail, url: master_orders_datail_path(order_detail.id), method: :patch,local: true do |f| %>
          <%= f.select :make_status,OrderDetail.make_statuses.keys %>
          <%= f.submit "更新"  , class: "btn btn-success"%>
          <% end %>
@@ -76,14 +76,13 @@
   </tbody>
   <% end %>
 </table>
-
 <table>
   <tr>
     <th>
       商品合計
     </th>
     <td>
-
+      <%= (@order.amount_billed) - 800 %>円
     </td>
   </tr>
   <tr>
