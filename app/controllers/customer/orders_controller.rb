@@ -55,11 +55,23 @@ class Customer::OrdersController < ApplicationController
       @cart_items = current_customer.shopping_carts.all
 
   end
+  
+  def index
+    @orders = current_customer.orders
+  end
+  
+  def show
+     @order = Order.find(params[:id])
+     @order_details = @order.order_details
+  end
+
     private
   def order_params
     params.require(:order).permit(:name, :address, :amount_billed, :payment_method, :postal_code, :created_at)
   end
+  
   def address_params
     params.require(:order).permit(:postal_code, :address_name, :address )
   end
+
 end
