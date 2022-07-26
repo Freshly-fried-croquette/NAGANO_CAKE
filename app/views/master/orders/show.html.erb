@@ -19,7 +19,10 @@
 <tr>
 <td>注文ステータス</td>
 <td>
-  <%= select :status,:name,Order.order_statuses.keys.to_a %>
+  <%= form_with model: @order, url: master_order_path, method: :patch, local: true do |f| %>
+  <%= f.select :order_status,Order.order_statuses.keys %>
+  <%= f.submit "更新" , class: "btn btn-success" %>
+  <% end %>
 </td>
 </tr>
 </table>
@@ -33,7 +36,7 @@
     単価（税込）
   </th>
   <th>
-  　数量
+    数量
   </th>
   <th>
     小計
@@ -53,7 +56,7 @@
        <%= order_details.product.name %>
      </td>
      <td>
-       <%= (rder_details.price*1.1).round %>
+       <%= (order_details.price*1.1).round %>
      </td>
      <td>
         <%= order_details.quantity %>
@@ -62,10 +65,12 @@
          <%= (order_details.price)*(order_details.quantity) %>
      </td>
      <td>
-         <%= select :status,:name,OrderDetail.make_statuses.keys.to_a %>
-     </td>
-     <td>
-
+       <div>
+         <%= form_with model: order_details, url: master_order_path , method: :patch,local: true do |f| %>
+         <%= f.select :make_status,OrderDetail.make_statuses.keys %>
+         <%= f.submit "更新"  , class: "btn btn-success"%>
+         <% end %>
+       </div>
      </td>
     </tr>
   </tbody>
@@ -78,7 +83,7 @@
       商品合計
     </th>
     <td>
-
+      <%= (@order.amount_billed) -800 %>
     </td>
   </tr>
   <tr>
