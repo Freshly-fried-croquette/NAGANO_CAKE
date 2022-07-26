@@ -1,6 +1,10 @@
 class Master::OrdersDatailsController < ApplicationController
   def update
-      @order_detail.update(order_detail_params)
+    
+      @order_details = OrderDetail.find(params[:id])
+      @order = @order_details.order
+      @order_details.update(order_detail_params)
+      redirect_to master_order_path(@order.id)
   end
 
 
