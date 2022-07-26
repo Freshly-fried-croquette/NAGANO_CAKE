@@ -7,5 +7,5 @@ class Master::OrdersController < ApplicationController
    def order_params
      params.require(:order).permit(:quantity, :price)
    end
-  
+
 end

@@ -1,9 +1,8 @@
 class Product < ApplicationRecord
   has_one_attached :image
-  has_many :shopping_carts
+  has_many :shopping_carts, dependent: :destroy
   belongs_to :genre
-  belongs_to :order
-  has_many :order_detail
+  has_many :order_details, dependent: :destroy
 
   validates :name, presence: true
   validates :description, presence: true
